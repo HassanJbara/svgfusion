@@ -24,3 +24,4 @@ umap-learn
 umap-learn[plot]
 shapely
 kivy
+wandb
