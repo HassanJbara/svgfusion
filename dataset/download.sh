@@ -7,9 +7,9 @@ function gdrive_download () {
 }
 
 echo "Downloading dataset..."
-gdrive_download 10Zx4TB1-BEdWv1GbwcSUl2-uRFiqgUP1 icons_meta.csv
-gdrive_download 1gTuO3k98u_Y1rvpSbJFbqgCf6AJi2qIA icons_tensor.zip
+gdrive_download 10Zx4TB1-BEdWv1GbwcSUl2-uRFiqgUP1 ./dataset/icons_meta.csv
+gdrive_download 1gTuO3k98u_Y1rvpSbJFbqgCf6AJi2qIA ./dataset/icons_tensor.zip
 
 echo "Download done. Unzipping..."
-unzip icons_tensor.zip
+unzip ./dataset/icons_tensor.zip -d ./dataset/
 echo "Done."
