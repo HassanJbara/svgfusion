@@ -80,7 +80,7 @@ class LabelEmbedder(nn.Module):
         embeddings = self.embedding_table(labels)
         return embeddings
 
-    #################################################################################
+#################################################################################
 #                   Sine/Cosine Positional Embedding Functions                  #
 #################################################################################
 # https://github.com/facebookresearch/mae/blob/main/util/pos_embed.py
