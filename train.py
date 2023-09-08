@@ -17,13 +17,14 @@ def parse_arguments():
     
     parser.add_argument("--batch_size", type=int, default=100, help="batch size for training")
     parser.add_argument("--epochs", type=int, default=100, help="number of epochs to train for")
-    parser.add_argument("--learning_rate", type=int, default=0.0001, help="learning rate for training")
+    parser.add_argument("--lr", type=int, default=0.0001, help="learning rate for training")
     parser.add_argument("--use_scheduler", type=bool, default=True, help="use scheduler for training")
     parser.add_argument("--predict_xstart", type=bool, default=True, help="predict xstart for as training target")
     parser.add_argument("--depth", type=int, default=28, help="depth of the created model")
     parser.add_argument("--n_samples", type=int, default=None, help="number of samples to train on. Leave empty for all samples")
 
     parser.add_argument("--wandb", type=bool, default=True, help="use wandb for logging")
+    parser.add_argument("--wandb_key", type=str, default=None, help="wandb api key")
     parser.add_argument("--wandb_project", type=str, default="svgfusion", help="wandb project name")
 
     args = parser.parse_args()
@@ -32,13 +33,18 @@ def parse_arguments():
 
 
 def main(args):
-    assert args.n_samples > 0, "n_samples must be greater than 0"
+    if args.n_samples: 
+        assert args.n_samples > 0, "n_samples must be greater than 0"
+        assert args.n_samples > args.batch_size*2, "n_samples must be at least twice the batch_size"
+    
+    if args.wandb:
+        assert args.wandb_key is not None, "wandb_key must be specified"
+
     assert args.depth > 0, "depth must be greater than 0"
     assert args.epochs > 0, "epochs must be greater than 0"
-    assert args.learning_rate > 0, "learning_rate must be greater than 0"
+    assert args.lr > 0, "learning_rate must be greater than 0"
     assert args.batch_size > 0, "batch_size must be greater than 0"
     assert args.vae_directory is not None, "vae_directory must be specified"
-    assert args.n_samples > args.batch_size*2, "n_samples must be at least twice the batch_size"
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     training_config = {
@@ -49,7 +55,7 @@ def main(args):
         'depth': args.depth,
         'dropout': 0.1,
         'epochs': args.epochs,
-        'learning_rate': args.learning_rate,
+        'learning_rate': args.lr,
         'batch_size': args.batch_size,
         'n_samples': args.n_samples, # None = all of the samples
         'magical_number': 0.7128, # mean of std's of latents
@@ -61,7 +67,7 @@ def main(args):
 
     if args.wandb:
         # tell wandb to get started
-        wandb.login()
+        wandb.login(key=args.wandb_key)
         with wandb.init(project=args.wandb_project, config=training_config):
             # access all HPs through wandb.config, so logging matches execution!
             config = wandb.config

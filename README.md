@@ -35,7 +35,9 @@ chmod u+x ./dataset/download.sh
 You can train the model with the provided notebooks or use the following command:
 
 ```bash
-python train.py vae_directory ./pretrained/hierarchical_ordered.pth.tar --batch_size 8 --num_epochs 100 --lr 1e-4 --use_scheduler True --predict_xstart True --depth 28 --n_samples None --wandb True --wandb_key <your_wandb_key> --wandb_project_name svgfusion
+python train.py vae_directory ./pretrained/hierarchical_ordered.pth.tar --batch_size 8 --num_epochs 100 --lr 1e-4 \
+        --use_scheduler True --predict_xstart True --depth 28 --n_samples None \
+        --wandb True --wandb_key <your_wandb_key> --wandb_project_name svgfusion
 ```
 
 Those are all the parameters with the default values. None of them is required, except for wandb_key if you want to use wandb, and `n_samples=None` means using all the data in the dataset.
