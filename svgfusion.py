@@ -17,8 +17,9 @@ class TimestepEmbedder(nn.Module):
     """
     def __init__(self, hidden_size, frequency_embedding_size=256):
         super().__init__()
+        # This can probably be removed and only the timestep_embedding function used. at least the linears, not sure about the SiLU
         self.mlp = nn.Sequential(
-            nn.Linear(frequency_embedding_size, hidden_size, bias=True),
+            nn.Linear(frequency_embedding_size, hidden_size, bias=True), 
             nn.SiLU(),
             nn.Linear(hidden_size, hidden_size, bias=True),
         )
@@ -252,6 +253,7 @@ class DiT(nn.Module):
         t: (N,) tensor of diffusion timesteps
         y: (N,) tensor of class labels
         """
+        # It's unclear to me if positional embedding should be added, since we only have one "patch", i.e. position=1 always.
         x = x + self.pos_embed      # (N, T, D), where T = H * W / patch_size ** 2
         t = self.t_embedder(t)                   # (N, D)
         y = self.y_embedder(y, self.training)    # (N, D)
