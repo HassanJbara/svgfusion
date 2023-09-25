@@ -1,6 +1,8 @@
 # svgfusion
 
-Generating SVGs with Transformer-based Diffusion Models
+https://github.com/HassanJbara/svgfusion/assets/82707653/519d797d-047c-414d-9db3-e9a37ce19280
+
+This is the code for my bachelor's project, Generating SVGs with Transformer-based Diffusion Models. More details in my blog post.
 
 ## Setup
 
