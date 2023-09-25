@@ -51,3 +51,11 @@ There are three notebooks in the `notebooks` folder:
 - `complete_pipeline.ipynb`: training the model with minimal loggin using the logging function from the `utils` module.
 - `complete_pipeline_with_wandb.ipynb`: training the model using wandb for logging and visualization.
 - `hyperparameter_sweeping.ipynb`: hyperparameter search using wandb sweeps.
+
+
+## Credits
+
+The codebase of this project is based mainly on:
+
+- [DeepSVG](https://github.com/alexandre01/deepsvg)https://github.com/alexandre01/deepsvg
+- [Scalable Diffusion Models with Transformers](https://github.com/facebookresearch/DiT)https://github.com/facebookresearch/DiT
