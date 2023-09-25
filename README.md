@@ -57,5 +57,5 @@ There are three notebooks in the `notebooks` folder:
 
 The codebase of this project is based mainly on:
 
-- [DeepSVG](https://github.com/alexandre01/deepsvg)https://github.com/alexandre01/deepsvg
-- [Scalable Diffusion Models with Transformers](https://github.com/facebookresearch/DiT)https://github.com/facebookresearch/DiT
+- [DeepSVG](https://github.com/alexandre01/deepsvg)
+- [Scalable Diffusion Models with Transformers](https://github.com/facebookresearch/DiT)
