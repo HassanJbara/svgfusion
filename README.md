@@ -1,6 +1,6 @@
 # svgfusion
 
-https://github.com/HassanJbara/svgfusion/assets/82707653/519d797d-047c-414d-9db3-e9a37ce19280
+https://github.com/HassanJbara/svgfusion/assets/82707653/746fa72f-892b-4d48-86fd-a3fa672f858a
 
 This is the code for my bachelor's project, Generating SVGs with Transformer-based Diffusion Models. More details in my blog post.
 
